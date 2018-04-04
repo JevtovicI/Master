@@ -1,0 +1,24 @@
+<div ng-controller="kupiLekCtrl">
+				<label class="kupiLabel">Naziv:</label>
+				<span>{{lek.naziv}}</span><br>
+				<label class="kupiLabel">Genericki naziv:</label>
+				<span>{{lek.generickiNaziv}}</span><br>
+				<label class="kupiLabel">Kolicina:</label>
+				<span>{{lek.kolicina}}</span><br>
+				<label class="kupiLabel">Apoteka:</label>
+				<span>{{lek.apotekaIme}}</span><br>
+				<label class="kupiLabel">Proizvodjac:</label>
+				<span>{{lek.proizvodjacIme}}</span><br><br>
+			<div class="form-group">
+				<form class="form-inline">
+					<label class="kupiLabel">Kolicina</label>
+					<input class="form-control" ng-model="kupljenaKolicina" />
+					<button class="btn btn-primary" 
+					ng-click="kupi(kupljenaKolicina)">Kupi</button>
+				</form>
+				
+				
+			</div>
+
+			
+</div>

@@ -1,0 +1,90 @@
+<div ng-controller="standoviCtrl">
+	<div class="page-header">
+		<h1>Standovi</h1>
+	</div>
+	<button ng-click="toggleForm()" class="btn btn-primary">Promeni formu</button>
+	<br><br>
+	<div class="row">
+		<form ng-show="showForm">
+			<div class="form-group">
+				<label>Zakupac</label>
+				<input ng-model="noviStand.zakupac" 
+						class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label>Povrsina</label>
+				<input ng-model="noviStand.povrsina" 
+					   class="form-control"/>
+			</div>
+			<div class="form-group">
+			<label>Sajam</label>
+				<select ng-model="noviStand.sajamId" 
+						ng-change="changeHappened()" 
+						class="form-control">
+					<option ng-repeat="sa in sajmovi" value="{{sa.id}}">{{sa.naziv}}</option>
+				</select>
+			</div>
+			<button ng-show="!showEditButton" 
+					class="btn btn-primary" 
+					ng-click="add()">Dodaj stand</button>
+			<button ng-show="showEditButton" 
+					class="btn btn-primary" 
+					ng-click="edit(idStand)">Izmeni stand</button>
+		</form>
+		<form ng-show="!showForm">
+			<div class="form-group">
+				<label for="zakupac">Zakupac</label>
+				<input id="zakupac" 
+					   class="form-control" 
+					   ng-model="searchStand.zakupac" />
+			</div>
+			<div class="form-group">
+				<label for="minP">Minimalna povrsina</label>
+				<input id="minP" 
+					   class="form-control" 
+					   ng-model="searchStand.minP" />
+			</div>
+			<div class="form-group">
+				<label for="maxP">Maksimalna povrsina</label>
+				<input id="maxP" 
+					   class="form-control" 
+					   ng-model="searchStand.maxP" />
+			</div>
+			<button ng-click="search()" class="btn btn-primary">Pretrazi</button>
+			<button ng-click="searchMinP()" class="btn btn-primary">minP > 100</button>
+		</form>
+		
+		<div>
+			<div class="btn-group pull-right">
+				<button ng-disabled="pageNum == 0" 
+						ng-click="go(-1)" 
+						class="btn btn-primary">Nazad</button>
+				<button ng-disabled="pageNum == totalPage-1" 
+						ng-click="go(1)" 
+						class="btn btn-primary">Napred</button>
+			</div>
+			<table class="table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th>Zakupac</th>
+						<th>Povrsina</th>
+						<th>Sajam</th>
+						<th>&nbsp</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="st in standovi">
+						<td>{{st.zakupac}}</td>
+						<td>{{st.povrsina}}</td>
+						<td>{{st.sajamNaziv}}</td>
+						<td>
+							<button ng-click="showButton(st.id)" class="btn btn-default">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,25 @@
+<div ng-controller="editUserCtrl">
+	<form class="col-lg-5">
+	<div class="form-group">
+		<label for="firstname" >First name:</label>
+		<input id="firstname" class="form-control" ng-model="editUser.firstname"/>
+	</div>
+	<div class="form-group">
+		<label for="lastname" >Last name:</label>
+		<input id="lastname" class="form-control" ng-model="editUser.lastname"/>
+	</div>
+	<div class="form-group">
+		<label for="email" >Email:</label>
+		<input id="email" class="form-control" ng-model="editUser.email"/>
+	</div>
+	<div class="form-group">
+		<label for="password" >Password:</label>
+		<input id="password" class="form-control" ng-model="editUser.password" type="password"/>
+	</div>
+	<div class="form-group">
+		<label for="passwordConfirm" >Password confirm:</label>
+		<input id="passwordConfirm" class="form-control" ng-model="editUser.passwordConfirm" type="password"/>
+	</div>
+		<button class="btn btn-primary" ng-click="edit()">Edit</button>
+	</form>
+</div>

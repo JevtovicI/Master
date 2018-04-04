@@ -1,0 +1,35 @@
+<div ng-controller="editLekCtrl">
+		<form>
+			<div class="form-group">
+				<label>Naziv</label>
+				<input ng-model="editLek.naziv" 
+						class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label>Genericki naziv</label>
+				<input ng-model="editLek.generickiNaziv" 
+					   class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label>Kolicina na stanju</label>
+				<input ng-model="editLek.kolicina" 
+					   class="form-control"/>
+			</div>
+			<div class="form-group">
+			<label>Proizvodjac</label>
+				<select ng-model="editLek.proizvodjacId" 
+						class="form-control">
+					<option ng-repeat="p in proizvodjaci" value="{{p.id}}">{{p.ime}}</option>
+				</select>
+			</div>
+			<div class="form-group">
+			<label>Apoteka</label>
+				<select ng-model="editLek.apotekaId" 
+						class="form-control">
+					<option ng-repeat="a in apoteke" value="{{a.id}}">{{a.ime}}</option>
+				</select>
+			</div>
+			<button class="btn btn-primary" 
+					ng-click="edit(editLek.apotekaId)">Sacuvaj</button>
+		</form>
+</div>

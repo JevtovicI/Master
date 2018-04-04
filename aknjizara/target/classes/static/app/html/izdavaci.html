@@ -1,0 +1,33 @@
+<div ng-controller="knjigeCtrl">
+	<h1>Activities</h1>
+	<button class="btn btn-success" ng-click="dodajPrevoznika()">
+		<span class="glyphicon glyphicon-heart">Dodaj izdavaca</span>
+	</button>
+	<br />
+	<div class="row">
+		<div class="col-lg-6 col-md-7 col-sm-8 col-xs-12">
+			<table class="table table-border table-striped" border="1">
+				<thead>
+					<th>Naziv</th>
+					<th>Adresa</th>
+					<th>Telefon</th>
+					<th>Edit</th>
+					<th>Delete</th>
+				</thead>
+				<tbody>
+					<tr ng-repeat="p in izdavaci">
+						<td>{{p.naziv}}</td>
+						<td>{{p.adresa}}</td>
+						<td>{{p.telefon}}</td>
+						<td><button class="btn btn-warning" ng-click="goToEdit(a.id)">
+								<span class="glyphicon glyphicon-pencil"></span>
+							</button></td>
+						<td><button class="btn btn-danger" ng-click="delete(a.id)">
+								<span class="glyphicon glyphicon-remove"></span>
+							</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

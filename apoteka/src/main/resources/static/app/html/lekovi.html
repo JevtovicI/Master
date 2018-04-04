@@ -1,0 +1,98 @@
+<div ng-controller="lekoviCtrl">
+	<div class="page-header">
+		<h1>Lekovi</h1>
+	</div>
+	<br><br>
+	<div class="row">
+		<form>
+			<div class="form-group">
+				<label>Naziv</label>
+				<input ng-model="newLek.naziv" 
+						class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label>Genericki naziv</label>
+				<input ng-model="newLek.generickiNaziv" 
+					   class="form-control"/>
+			</div>
+			<div class="form-group">
+				<label>Kolicina na stanju</label>
+				<input ng-model="newLek.kolicina" 
+					   class="form-control"/>
+			</div>
+			<div class="form-group">
+			<label>Proizvodjac</label>
+				<select ng-model="newLek.proizvodjacId" 
+						class="form-control">
+					<option ng-repeat="p in proizvodjaci" value="{{p.id}}">{{p.ime}}</option>
+				</select>
+			</div>
+			<div class="form-group">
+			<label>Apoteka</label>
+				<select ng-model="newLek.apotekaId" 
+						class="form-control">
+					<option ng-repeat="a in apoteke" value="{{a.id}}">{{a.ime}}</option>
+				</select>
+			</div>
+			<button class="btn btn-primary" 
+					ng-click="add(newLek.apotekaId)">Dodaj</button>
+		</form>
+		<br/>
+		<form class="form-inline">
+		<div class="form-group">
+			<label>Apoteka</label>
+				<select ng-model="search.apotekaId" 
+						class="form-control">
+					<option ng-repeat="a in apoteke" value="{{a.id}}">{{a.ime}}</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="naziv">Naziv/Genericki naziv</label>
+				<input id="naziv" 
+					   class="form-control" 
+					   ng-model="search.naziv" />
+			</div>
+			<button ng-click="searchLekovi()" class="btn btn-primary">Trazi</button>
+			<button ng-click="ponistiSearchLekovi()" class="btn btn-warning" style="float: right">Ponisti pretragu</button>
+		</form>
+		
+		<div>
+			<table class="table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th>Naziv</th>
+						<th>Genericki naziv</th>
+						<th>Kolicina</th>
+						<th>Cena</th>
+						<th>Naziv apoteke</th>
+						<th>Naziv proizvodjaca</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="l in lekovi">
+						<td>{{l.naziv}}</td>
+						<td>{{l.generickiNaziv}}</td>
+						<td>{{l.kolicina}}</td>
+						<td>{{l.cena}}</td>
+						<td>{{l.apotekaIme}}</td>
+						<td>{{l.proizvodjacIme}}</td>
+						<td>
+							<button ng-click="goToKupi(l.id, l.apotekaId)" class="btn btn-primary">Kupovina</button>
+							<button ng-click="goToEdit(l.id, l.apotekaId)" class="btn btn-warning">Izmeni</button>
+							<button ng-click="brisanje(l.id, l.apotekaId)" class="btn btn-default">Brisanje</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			<br/>
+			<div class="btn-group pull-right">
+				<button ng-disabled="pageNum == 0" 
+						ng-click="go(-1)" 
+						class="btn btn-primary">Prethodna</button>
+				<button ng-disabled="pageNum == totalPage-1" 
+						ng-click="go(1)" 
+						class="btn btn-primary">Sledeća</button>
+			</div>
+		</div>
+	</div>
+</div>

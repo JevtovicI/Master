@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Implementation-Title: aknjizara Maven Webapp
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Ivan
+Implementation-Vendor-Id: aknjizara
+Build-Jdk: 1.8.0_161
+Created-By: Maven Integration for Eclipse
+Implementation-Vendor: Pivotal Software, Inc.
+

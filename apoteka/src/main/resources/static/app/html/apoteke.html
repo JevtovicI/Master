@@ -1,0 +1,25 @@
+<div ng-controller="apotekeCtrl">
+	<div class="page-header">
+		<h1><span class="badge">{{apoteke.length}}</span>&nbspApoteke</h1>
+	</div>
+	<br/><br/>
+	<div class="row">
+		<div class="col-lg-6 col-md-7 col-sm-8 col-xs-12">
+			<table class="table table-striped table-bordered">
+				<thead>
+					<tr>
+						<th>Ime</th>
+						<th>Adresa</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="a in apoteke">
+						<td>{{a.ime}}</td>
+						<td>{{a.adresa}}</td>
+						<td><button class="btn btn-primary" ng-click="goToLekovi(a.id)">Lekovi</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

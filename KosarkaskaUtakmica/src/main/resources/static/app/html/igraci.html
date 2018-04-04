@@ -1,0 +1,93 @@
+<div ng-controller="igraciCtrl">
+
+
+
+
+	<form>
+		<div class="form-group">
+			<label for="imePrezimeNP">Ime i Prezime</label> <input
+				ng-model="noviIgrac.imePrezime" type="text" class="form-control"
+				id="imePrezimeNP">
+		</div>
+		<div class="form-group">
+			<label for="brojNP">Broj</label> <input ng-model="noviIgrac.broj"
+				type="text" class="form-control" id="brojNP">
+		</div>
+		<div class="form-group">
+			<label for="pozicijaNP">Pozicija</label> <select
+				ng-model="noviIgrac.pozicijaId" class="form-control" id="pozicijaNP">
+				<option ng-repeat="p in pozicije" value="{{p.id}}">{{p.naziv}}</option>
+			</select>
+		</div>
+
+
+		<div class="form-group">
+			<label for="timNP">Tim</label> <select ng-model="noviIgrac.timId"
+				class="form-control" id="timNP">
+				<option ng-repeat="t in timovi" value="{{t.id}}">{{t.ime}}</option>
+			</select>
+		</div>
+		<button ng-click="dodaj()" type="button" class="btn btn-primary">Dodaj</button>
+	</form>
+
+
+	<br />
+	<form>
+		<div class="form-group">
+			<label for="imePrezimeTP">Ime i prezime</label> <input
+				ng-model="trazeniIgrac.imePrezime" type="text" class="form-control"
+				id="imePrezimeTP">
+		</div>
+		<div class="form-group">
+			<label for="brojTP">Broj</label> <input ng-model="trazeniIgrac.broj"
+				type="text" class="form-control" id="brojTP">
+		</div>
+		<div class="form-group">
+			<label for="timTP">Tim</label> <select ng-model="trazeniIgrac.timId"
+				class="form-control" id="timTP">
+				<option ng-repeat="t in timovi" value="{{t.id}}">{{t.ime}}</option>
+			</select>
+		</div>
+
+
+		<button ng-click="trazi()" type="button" class="btn btn-primary">Trazi</button>
+	</form>
+
+
+	<br /> <br /> <br />
+	<div class="btn-group pull-right">
+		<button class="btn btn-primary" ng-click="nazad()"
+			ng-disabled="pageNum == 0">Prethodna</button>
+		<button class="btn btn-primary" ng-click="napred()"
+			ng-disabled="pageNum == totalPages - 1">Sledeca</button>
+	</div>
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr>
+				<th>Ime i prezime</th>
+				<th>Broj</th>
+				<th>L. greske</th>
+				<th>Pozicija</th>
+				<th>Tim</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="p in igraci">
+				<td>{{p.imePrezime}}</td>
+				<td>{{p.broj}}</td>
+				<td>{{p.licneGreske}}</td>
+				<td>{{p.pozicijaNaziv}}</td>
+				<td>{{p.timIme}}</td>
+				<td>
+
+					<button ng-disabled="p.licneGreske >= 5" ng-click="faul(p.id)"
+						class="btn btn-primary">Faul</button>
+					<button ng-click="obrisi(p.id)" class="btn btn-danger">Obrisi</button>
+					<button ng-click="izmeni(p.id)" class="btn btn-warning">Izmeni</button>
+
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<hr>
+</div>
